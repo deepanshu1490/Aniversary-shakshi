@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>For Sakshuu</title>
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        min-height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: black; /* Changed background color to black */
+        font-family: Arial, sans-serif;
+        overflow: hidden;
+        flex-direction: column;
+      }
+
+      .popup {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%) scale(0);
+        background: white;
+        padding: 2rem;
+        border-radius: 20px;
+        box-shadow: 0 0 30px rgba(0, 0, 0, 0.2);
+        max-width: 400px;
+        width: 90%;
+        text-align: center;
+        animation: popupAnimation 0.5s ease forwards;
+        z-index: 1000;
+      }
+
+      @keyframes popupAnimation {
+        0% {
+          transform: translate(-50%, -50%) scale(0);
+          opacity: 0;
+        }
+        70% {
+          transform: translate(-50%, -50%) scale(1.1);
+        }
+        100% {
+          transform: translate(-50%, -50%) scale(1);
+          opacity: 1;
+        }
+      }
+
+      .message {
+        font-size: 1.2rem;
+        line-height: 1.8;
+        color: #333;
+        margin-bottom: 1.5rem;
+      }
+
+      .emoji {
+        font-size: 2rem;
+        margin: 0 5px;
+        display: inline-block;
+        animation: bounce 1s infinite;
+      }
+
+      @keyframes bounce {
+        0%, 100% { transform: translateY(0); }
+        50% { transform: translateY(-10px); }
+      }
+
+      .close-button {
+        display: inline-block;
+        padding: 10px 20px;
+        background-color: #ff69b4;
+        color: white;
+        text-decoration: none;
+        border-radius: 20px;
+        margin-top: 20px;
+        transition: all 0.3s ease;
+        cursor: pointer;
+      }
+
+      .close-button:hover {
+        background-color: #ff1493;
+        transform: scale(1.1);
+      }
+
+      .sparkle {
+        position: absolute;
+        width: 4px;
+        height: 4px;
+        background: white;
+        border-radius: 50%;
+        animation: sparkle 1.5s linear infinite;
+      }
+
+      @keyframes sparkle {
+        0% {
+          transform: scale(0) rotate(0deg);
+          opacity: 0;
+        }
+        50% {
+          transform: scale(1) rotate(180deg);
+          opacity: 1;
+        }
+        100% {
+          transform: scale(0) rotate(360deg);
+          opacity: 0;
+        }
+      }
+
+      .anniversary-text {
+        font-style: Cursive;
+        font-size: 8rem; /* Increased font size */
+        color: rgb(241, 20, 79);
+        text-align: center;
+        margin-bottom: 10px; /* Adjusted margin */
+        animation: fadeIn 2s ease-in-out, textGlow 1.5s infinite alternate;
+        background: url('https://iili.io/3fa0Lps.jpg') no-repeat center center;
+        background-size: cover;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+
+      @keyframes fadeIn {
+        0% { opacity: 0; }
+        100% { opacity: 1; }
+      }
+
+      @keyframes textGlow {
+        0% { text-shadow: 0 0 10px yellow, 0 0 20px yellow, 0 0 30px yellow; }
+        100% { text-shadow: 0 0 20px yellow, 0 0 30px yellow, 0 0 40px yellow; }
+      }
+
+      .show-popup-button {
+        display: inline-block;
+        padding: 10px 20px;
+        background-color: yellow;
+        color: black;
+        text-decoration: none;
+        border-radius: 20px;
+        margin-top: 20px;
+        transition: all 0.3s ease;
+        cursor: pointer;
+      }
+
+      .show-popup-button:hover {
+        background-color: #ffd700;
+        transform: scale(1.1);
+      }
+
+      .heart {
+        position: absolute;
+        width: 20px;
+        height: 20px;
+        background: pink;
+        border-radius: 50% 50% 0 0;
+        transform: rotate(-45deg);
+        animation: float 5s infinite;
+      }
+
+      .heart::before,
+      .heart::after {
+        content: '';
+        position: absolute;
+        width: 20px;
+        height: 20px;
+        background: pink;
+        border-radius: 50%;
+      }
+
+      .heart::before {
+        top: -10px;
+        left: 0;
+      }
+
+      .heart::after {
+        left: 10px;
+        top: 0;
+      }
+
+      @keyframes float {
+        0% {
+          transform: translateY(0) rotate(-45deg);
+          opacity: 1;
+        }
+        100% {
+          transform: translateY(-100vh) rotate(-45deg);
+          opacity: 0;
+        }
+      }
+
+      .container {
+        text-align: center;
+        padding: 20px;
+      }
+
+      .image-container {
+        margin: 20px 0;
+      }
+
+      .image-container img {
+        max-width: 100%;
+        height: auto;
+        border-radius: 20px;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="anniversary-text">Happy Anniversary sakshuu</div>
+      <div class="image-container">
+      
+      <button class="show-popup-button" onclick="showPopup()">Click Here</button>
+    </div>
+
+    <div class="popup" id="popup" style="display: none;">
+      <div class="message">
+        Hey Sakshuu! 🌸<br>
+        You're the most amazing person I know! ✨<br>
+        Your smile lights up my world 🌟<br>
+        Every moment with you is magical ✨<br>
+        You make my heart skip a beat 💓<br>
+        You're my favorite person in the whole world 🌍<br>
+        Thank you for being you! 💝
+      </div>
+      <div style="margin: 20px 0;">
+        <span class="emoji">❤️</span>
+        <span class="emoji">💖</span>
+        <span class="emoji">💝</span>
+      </div>
+      <a href="index.html" class="close-button">Back to Letter 💌</a>
+    </div>
+
+    <script>
+      function showPopup() {
+        document.getElementById('popup').style.display = 'block';
+      }
+
+      // Add sparkles to the background
+      function createSparkle() {
+        const sparkle = document.createElement('div');
+        sparkle.className = 'sparkle';
+        sparkle.style.left = Math.random() * 100 + 'vw';
+        sparkle.style.top = Math.random() * 100 + 'vh';
+        document.body.appendChild(sparkle);
+        
+        setTimeout(() => {
+          sparkle.remove();
+        }, 1500);
+      }
+
+      // Create sparkles periodically
+      setInterval(createSparkle, 300);
+
+      // Add floating hearts to the background
+      function createHeart() {
+        const heart = document.createElement('div');
+        heart.className = 'heart';
+        heart.style.left = Math.random() * 100 + 'vw';
+        heart.style.animationDuration = Math.random() * 2 + 3 + 's';
+        document.body.appendChild(heart);
+
+        setTimeout(() => {
+          heart.remove();
+        }, 5000);
+      }
+
+      // Create hearts periodically
+      setInterval(createHeart, 500);
+    </script>
+  </body>
+</html>
